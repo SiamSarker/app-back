@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Param,
+  NotFoundException,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserCredDTO, createUserDto } from './dto/user.dto';
 
@@ -9,6 +16,15 @@ export class UserController {
   @Get()
   getUsers(): string {
     return "I'm a user";
+  }
+
+  @Get(':email')
+  async getUserByEmail(@Param('email') email: string) {
+    const user = await this.userService.getUserByEmail(email);
+    if (!user) {
+      throw new NotFoundException(`User with email ${email} not found`);
+    }
+    return user;
   }
 
   @Post('create')

@@ -28,4 +28,8 @@ export class UserService {
     const result = this.userRepository.insert(user);
     return result;
   }
+
+  async getUserByEmail(email: string): Promise<Users | undefined> {
+    return this.userRepository.findOne({ where: { email } });
+  }
 }

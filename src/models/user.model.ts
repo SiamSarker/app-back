@@ -14,7 +14,12 @@ export class Users {
   @Column('varchar', { length: 255, name: 'last_name', nullable: false })
   readonly last_name?: string;
 
-  @Column('varchar', { length: 320, name: 'email', nullable: false })
+  @Column('varchar', {
+    length: 320,
+    name: 'email',
+    nullable: false,
+    unique: true,
+  })
   readonly email?: string;
 
   @Column('varchar', { length: 255, name: 'password', nullable: false })
