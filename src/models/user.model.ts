@@ -6,9 +6,9 @@ export class Users {
   readonly id?: number;
 
   @Column('varchar', { length: 255, name: 'first_name', nullable: false })
-  readonly first_name: string;
+  readonly first_name?: string;
 
-  @Column('varchar', { length: 255, name: 'middle_name', nullable: true })
+  @Column('varchar', { length: 255, name: 'middle_name', nullable: false })
   readonly middle_name?: string;
 
   @Column('varchar', { length: 255, name: 'last_name', nullable: false })
